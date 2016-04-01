@@ -9,25 +9,26 @@
   language governing permissions and limitations under the License.
 	
   From _The Busy Coder's Guide to Android Development_
-    http://commonsware.com/Android
+    https://commonsware.com/Android
  */
 
 package com.commonsware.android.downloader;
 
+import android.app.Fragment;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.content.LocalBroadcastManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
-import com.actionbarsherlock.app.SherlockFragment;
 
-public class DownloadFragment extends SherlockFragment implements
+public class DownloadFragment extends Fragment implements
     View.OnClickListener {
   private Button b=null;
 
@@ -38,7 +39,7 @@ public class DownloadFragment extends SherlockFragment implements
 
     b=(Button)result.findViewById(R.id.button);
     b.setOnClickListener(this);
-    
+
     return(result);
   }
 
@@ -46,15 +47,16 @@ public class DownloadFragment extends SherlockFragment implements
   public void onResume() {
     super.onResume();
 
-    IntentFilter f=
-        new IntentFilter(Downloader.ACTION_COMPLETE);
+    IntentFilter f=new IntentFilter(Downloader.ACTION_COMPLETE);
 
-    getActivity().registerReceiver(onEvent, f);
+    LocalBroadcastManager.getInstance(getActivity())
+                         .registerReceiver(onEvent, f);
   }
 
   @Override
   public void onPause() {
-    getActivity().unregisterReceiver(onEvent);
+    LocalBroadcastManager.getInstance(getActivity())
+                         .unregisterReceiver(onEvent);
 
     super.onPause();
   }
@@ -65,11 +67,11 @@ public class DownloadFragment extends SherlockFragment implements
 
     Intent i=new Intent(getActivity(), Downloader.class);
 
-    i.setData(Uri.parse("http://commonsware.com/Android/excerpt.pdf"));
+    i.setData(Uri.parse("https://commonsware.com/Android/excerpt.pdf"));
 
     getActivity().startService(i);
   }
-  
+
   private BroadcastReceiver onEvent=new BroadcastReceiver() {
     public void onReceive(Context ctxt, Intent i) {
       b.setEnabled(true);

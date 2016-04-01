@@ -9,21 +9,21 @@
   language governing permissions and limitations under the License.
 	
   From _The Busy Coder's Guide to Android Development_
-    http://commonsware.com/Android
+    https://commonsware.com/Android
 */
 
 package com.commonsware.android.fakeplayer;
 
+import android.app.Activity;
 import android.os.Bundle;
-import com.actionbarsherlock.app.SherlockFragmentActivity;
 
-public class FakePlayer extends SherlockFragmentActivity {
+public class FakePlayer extends Activity {
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     
-    if (getSupportFragmentManager().findFragmentById(android.R.id.content)==null) {
-      getSupportFragmentManager().beginTransaction()
+    if (getFragmentManager().findFragmentById(android.R.id.content)==null) {
+      getFragmentManager().beginTransaction()
                                  .add(android.R.id.content,
                                       new PlayerFragment()).commit();
     }

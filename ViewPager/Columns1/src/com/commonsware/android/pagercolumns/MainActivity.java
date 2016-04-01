@@ -9,18 +9,18 @@
   language governing permissions and limitations under the License.
   
   From _The Busy Coder's Guide to Android Development_
-    http://commonsware.com/Android
+    https://commonsware.com/Android
  */
 
 package com.commonsware.android.pagercolumns;
 
+import android.app.Activity;
 import android.os.Bundle;
-import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v13.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.viewpagerindicator.TabPageIndicator;
 
-public class MainActivity extends SherlockFragmentActivity {
+public class MainActivity extends Activity {
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -29,10 +29,10 @@ public class MainActivity extends SherlockFragmentActivity {
     ViewPager pager=(ViewPager)findViewById(R.id.pager);
 
     if (pager == null) {
-      if (getSupportFragmentManager().findFragmentById(R.id.editor1) == null) {
+      if (getFragmentManager().findFragmentById(R.id.editor1) == null) {
         FragmentPagerAdapter adapter=buildAdapter();
 
-        getSupportFragmentManager().beginTransaction()
+        getFragmentManager().beginTransaction()
                                    .add(R.id.editor1,
                                         adapter.getItem(0))
                                    .add(R.id.editor2,
@@ -50,6 +50,6 @@ public class MainActivity extends SherlockFragmentActivity {
   }
 
   private FragmentPagerAdapter buildAdapter() {
-    return(new SampleAdapter(this, getSupportFragmentManager()));
+    return(new SampleAdapter(this, getFragmentManager()));
   }
 }

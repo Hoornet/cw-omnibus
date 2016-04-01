@@ -11,7 +11,7 @@
   language governing permissions and limitations under the License.
   
   From _The Busy Coder's Guide to Android Development_
-    http://commonsware.com/Android
+    https://commonsware.com/Android
  */
 
 // derived from https://gist.github.com/JakeWharton/2621173
@@ -19,9 +19,9 @@
 package com.commonsware.android.sensor.monitor;
 
 import android.app.Activity;
-import com.actionbarsherlock.app.SherlockListFragment;
+import android.app.ListFragment;
 
-public class ContractListFragment<T> extends SherlockListFragment {
+public class ContractListFragment<T> extends ListFragment {
   private T contract;
 
   @SuppressWarnings("unchecked")
@@ -43,7 +43,7 @@ public class ContractListFragment<T> extends SherlockListFragment {
   @Override
   public void onDetach() {
     super.onDetach();
-    
+
     contract=null;
   }
 

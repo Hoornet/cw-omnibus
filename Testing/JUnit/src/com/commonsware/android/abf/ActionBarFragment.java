@@ -9,25 +9,25 @@
   language governing permissions and limitations under the License.
 	
   From _The Busy Coder's Guide to Android Development_
-    http://commonsware.com/Android
+    https://commonsware.com/Android
  */
 
 package com.commonsware.android.abf;
 
-import java.util.ArrayList;
+import android.app.ListFragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.TextView;
-import com.actionbarsherlock.app.SherlockListFragment;
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuInflater;
-import com.actionbarsherlock.view.MenuItem;
+import java.util.ArrayList;
 
-public class ActionBarFragment extends SherlockListFragment implements
+public class ActionBarFragment extends ListFragment implements
     TextView.OnEditorActionListener {
   private static final String[] items= { "lorem", "ipsum", "dolor",
       "sit", "amet", "consectetuer", "adipiscing", "elit", "morbi",

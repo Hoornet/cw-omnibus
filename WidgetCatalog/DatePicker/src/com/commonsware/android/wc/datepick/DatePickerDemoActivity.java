@@ -9,7 +9,7 @@
   language governing permissions and limitations under the License.
   
   From _The Busy Coder's Guide to Android Development_
-    http://commonsware.com/Android
+    https://commonsware.com/Android
 */
 
 package com.commonsware.android.wc.datepick;
@@ -55,7 +55,9 @@ public class DatePickerDemoActivity extends Activity implements
   @Override
   public void onCheckedChanged(CompoundButton buttonView,
                                boolean isChecked) {
-    picker.setCalendarViewShown(isChecked);
+    if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.HONEYCOMB) {
+      picker.setCalendarViewShown(isChecked);
+    }
   }
 
   @Override

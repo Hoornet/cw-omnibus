@@ -1,5 +1,5 @@
 /***
-  Copyright (c) 2012 CommonsWare, LLC
+  Copyright (c) 2012-2014 CommonsWare, LLC
   Licensed under the Apache License, Version 2.0 (the "License"); you may not
   use this file except in compliance with the License. You may obtain a copy
   of the License at http://www.apache.org/licenses/LICENSE-2.0. Unless required
@@ -9,15 +9,15 @@
   language governing permissions and limitations under the License.
   
   From _The Busy Coder's Guide to Android Development_
-    http://commonsware.com/Android
+    https://commonsware.com/Android
  */
 
 package com.commonsware.android.pagerbar;
 
+import android.app.Fragment;
+import android.app.FragmentManager;
 import android.content.Context;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v13.app.FragmentPagerAdapter;
 
 public class SampleAdapter extends FragmentPagerAdapter {
   Context ctxt=null;

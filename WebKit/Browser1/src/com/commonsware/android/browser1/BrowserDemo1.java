@@ -9,7 +9,7 @@
   language governing permissions and limitations under the License.
 	
   From _The Busy Coder's Guide to Android Development_
-    http://commonsware.com/Android
+    https://commonsware.com/Android
 */
 
 package com.commonsware.android.browser1;
@@ -27,6 +27,6 @@ public class BrowserDemo1 extends Activity {
     setContentView(R.layout.main);
     browser=(WebView)findViewById(R.id.webkit);
     
-    browser.loadUrl("http://commonsware.com");
+    browser.loadUrl("https://commonsware.com");
   }
 }

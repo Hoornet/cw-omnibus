@@ -1,5 +1,24 @@
-Welcome to the source code for _The Busy Coder's Guide to Android
-Development_!
+Welcome to the source code for [_The Busy Coder's Guide to Android Development_](https://commonsware.com/Android)!
+
+## About the Book
+
+_The Busy Coder's Guide to Android Development_ is a book covering Android application development, from basics
+through advanced capabilities. It is updated several times a year and is available through
+[the Warescription](https://commonsware.com/warescription) program. Subscribers also have access to office
+hours chats and other benefits.
+
+This repository contains the source code for the hundreds of sample apps profiled in the book. These 
+samples are updated as the book is, with `git` tags applied to tie sample code versions to book
+versions.
+
+The book, and the samples, were written by Mark Murphy. You may also have run into him through
+Stack Overflow:
+
+<a href="http://stackoverflow.com/users/115145/commonsware">
+<img src="http://stackoverflow.com/users/flair/115145.png" width="208" height="58" alt="profile for CommonsWare at Stack Overflow, Q&amp;A for professional and enthusiast programmers" title="profile for CommonsWare at Stack Overflow, Q&amp;A for professional and enthusiast programmers">
+</a>
+
+## About the Code
 
 All of the source code in this archive is licensed under the
 Apache 2.0 license except as noted.
@@ -10,40 +29,36 @@ change with every release, and since some samples are used by
 multiple chapters, I am loathe to put chapter numbers in the
 actual directory names.
 
-## Using in Eclipse
+## Using in Android Studio
 
-These projects can be imported using the normal Eclipse import process. That
-being said, importing *all* the projects is probably a **really bad idea**, simply
-because there are so many of them. Import select projects, if and when you need
-them.
+All of the projects should have a `build.gradle` file suitable for
+importing the project into Android Studio. Note, though, that you
+may need to adjust the `compileSdkVersion` in `build.gradle` if it
+requests an SDK that you have not downloaded and do not wish to
+download. Similarly, you may need to adjust the `buildToolsVersion`
+value to refer to a version of the build tools that you have downloaded
+from the SDK Manager.
 
-Note, though, that you will have to fix some things up, particularly if you
-are getting errors:
+The samples also have stub Gradle wrapper files, enough to allow for
+easy import into Android Studio. However,
+**always check the `gradle-wrapper.properties` file before importing anything into Android Studio**,
+as there is always the chance that somebody has published material linking you to a hacked Gradle installation.
 
-- The build target of the project may be an Android SDK that you do not have
-installed. You will need to set the project build target to something that
-you have, by means of Project Properties.
+## Using with Command-Line Gradle
 
-- Many of these projects use [ActionBarSherlock](http://actionbarsherlock.com).
-There is a copy of a compatible ActionBarSherlock in `external/`, and the 
-project files are set up to reference that copy. If you import it first, your
-imports of other sample apps should go more smoothly. Alternatively, you 
-can download and set up ActionBarSherlock yourself in your Eclipse workspace,
-then go into Project Properties and point the
-book's project to use your copy of the ActionBarSherlock library project.
+Right now, you will need your own local installation of Gradle 2.1
+in order to build the projects from the command line, as the repository
+does not contain `gradlew` or its corresponding JAR for security reasons.
 
-- Many of the book samples, and ActionBarSherlock, require your Java compiler
-compliance level to be set to 1.6, so code can use the `@Override` annotation
-on interface method implementations. You can find this in Project Properties,
-in the Java Compiler area.
+## Projects Structure
 
-- Restarting Eclipse, for whatever reason, can clear up some undefined problems
-indicated by red exclamation marks over the project name in the Project Explorer.
+Projects in this book have a mix of structures. Some use the new
+Android Studio structure. Others use the older Eclipse structure.
+The Eclipse-style projects, though, are set up to still be able
+to be imported into Android Studio &mdash; it is just that the files will
+be in the directory structure used by Eclipse rather than in Android Studio's
+natural structure.
 
-## Using from Ant
-
-If you wish to use this code, you should delete build.xml from the project, then run
-  `android update project -p ...`  (where ... is the path to a project of interest)
-	on those projects you wish to use, so the build files are
-	updated for your Android SDK version.
-
+Slowly, this book is being converted over to having all projects use
+the Android Studio structure. This process should be completed sometime
+in 2016.
