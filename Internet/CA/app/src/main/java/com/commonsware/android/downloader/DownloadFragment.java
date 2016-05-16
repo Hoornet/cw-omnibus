@@ -7,7 +7,7 @@
   License is distributed on an "AS IS" BASIS,	WITHOUT	WARRANTIES OR CONDITIONS
   OF ANY KIND, either express or implied. See the License for the specific
   language governing permissions and limitations under the License.
-	
+  
   From _The Busy Coder's Guide to Android Development_
     https://commonsware.com/Android
  */
@@ -69,9 +69,7 @@ public class DownloadFragment extends Fragment implements
   private void doTheDownload() {
     Intent i=new Intent(getActivity(), Downloader.class);
 
-    i.setData(Uri.parse(
-      "https://wares.commonsware.com/excerpt-7p0.pdf"));
-
+    i.setData(Uri.parse(BuildConfig.URL));
     getActivity().startService(i);
     getActivity().finish();
   }
